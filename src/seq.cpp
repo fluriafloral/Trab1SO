@@ -38,11 +38,11 @@ int main() {
     Matrix matrix1 = readFile(fileName1);
     Matrix matrix2 = readFile(fileName2);
 
-    chrono::system_clock::time_point start = chrono::system_clock::now();
+    chrono::system_clock::time_point start = chrono::high_resolution_clock::now();
     Matrix result = calculateMatrixProductSeq(matrix1, matrix2);
-    chrono::system_clock::time_point end = chrono::system_clock::now();
+    chrono::system_clock::time_point end = chrono::high_resolution_clock::now();
 
-    chrono::milliseconds elapsedTime = chrono::duration_cast<chrono::milliseconds>(end - start);
+    const auto elapsedTime = chrono::duration_cast<chrono::nanoseconds>(end - start);
    
     string resultFileName = generateFileName("result-" + to_string(result.getN()) + "x" + to_string(result.getN()));
     createResultFile(resultFileName, result, elapsedTime);

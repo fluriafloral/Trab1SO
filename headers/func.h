@@ -9,4 +9,4 @@ bool fileExists(string fileName);
 string generateFileName(string prefix);
 Matrix readFile (string fileName);
 void createMatrixFile(string fileName, Matrix matrix);
-void createResultFile(string fileName, Matrix result, chrono::milliseconds timeElapsed);
+void createResultFile(string fileName, Matrix result, chrono::nanoseconds timeElapsed);

@@ -57,15 +57,14 @@ void createMatrixFile(string fileName, Matrix matrix) {
     file.close();
 }
 
-void createResultFile(string fileName, Matrix result, chrono::milliseconds timeElapsed) {
+void createResultFile(string fileName, Matrix result, chrono::nanoseconds timeElapsed) {
     ofstream file(fileName);
 
-    int n, m;
-    file << n << m;
+    file << result.getN() << " " << result.getM() << "\n";
 
     for (int j = 0; j < result.getN(); j++) {
         for (int k = 0; k < result.getM(); k++) {
-            file << "c" << j << k << " " << result.getValues()[j][k] << "\n";
+            file << "c" << j+1 << k+1 << " " << result.getValues()[j][k] << "\n";
         }
     }
     file << to_string(timeElapsed.count());
