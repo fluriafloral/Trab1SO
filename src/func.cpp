@@ -44,7 +44,7 @@ Matrix readFile (string fileName) {
 void createMatrixFile(string fileName, Matrix matrix) {
     ofstream file(fileName);
     
-    file << matrix.getN() << matrix.getM();
+    file << matrix.getN() << " " << matrix.getM() << "\n";
 
     for (int j = 0; j < matrix.getN(); j++) {
         for (int k = 0; k < matrix.getM(); k++) {
