@@ -3,13 +3,21 @@
 #include "../headers/matrix.h"
 
 Matrix generateMatrix(int n, int m) {
+    random_device randomDevice;
+    mt19937 generator(randomDevice());
+    uniform_real_distribution<> distribution(0.0, 10.0);
+
     float** values = new float*[n];
 
     for (int j = 0; j < n; j++) {
         values[j] = new float[m];
 
         for (int k = 0; k < m; k++) {
-            values[j][k] = static_cast <float> (rand()) / static_cast <float> (RAND_MAX/10); // gera um float aleatório entre 0.0 e 10.0
+            values[j][k] = distribution(generator); // gera um float aleatório entre 0.0 e 10.0
+            
+            if (values[j][k] > 10.0) {
+                values[j][k] = distribution(generator);
+            }
         }
     }
     

@@ -1,5 +1,5 @@
 #include <iostream> // cin, cout, endl, string
-#include <cstdlib> // rand
+#include <random> // random_device
 #include "../headers/func.h"
 #include "../headers/matrix.h"
 

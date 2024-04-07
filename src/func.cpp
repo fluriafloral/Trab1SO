@@ -26,30 +26,15 @@ Matrix readFile (string fileName) {
     int n, m;
     float** values = nullptr;
 
-    try {
-        ifstream file(fileName);
-        int n, m;
-        float** values = nullptr;
+    file >> n >> m;
+    values = new float*[n];
 
-        if (file.good()) {
-            file >> n >> m;
-            values = new float*[n];
+    for (int j = 0; j < n; j++){
+        values[j] = new float[m];
 
-            for (int j = 0; j < n; j++){
-                values[j] = new float[m];
-
-                for (int k = 0; k < m; k++) {
-                    file >> values[j][k];
-
-                }
-            }
-
-            file.close();
-        } else {
-            throw 418;
+        for (int k = 0; k < m; k++) {
+            file >> values[j][k];
         }
-    } catch(bool fileException) {
-        cout << "erro na leitura do arquivo " << fileName << endl;
     }
 
     file.close();
