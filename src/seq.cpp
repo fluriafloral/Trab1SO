@@ -6,12 +6,12 @@ Matrix calculateMatrixProductSeq (Matrix matrix1, Matrix matrix2) {
     int resultN = matrix1.getN();
     int resultM = matrix2.getM();
     int restrictor = matrix1.getM();
-    float** resultValues = new float*[resultN];
+    double** resultValues = new double*[resultN];
     
     try {
         if (matrix1.getM() == matrix2.getN()){
             for (int j = 0; j < resultN; j++) {
-                resultValues[j] = new float[resultM];
+                resultValues[j] = new double[resultM];
 
                 for (int k = 0; k < resultM; k++) {
                     resultValues[j][k] = 0;

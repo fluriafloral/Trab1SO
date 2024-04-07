@@ -1,6 +1,6 @@
 #include "../headers/matrix.h"
 
-    Matrix::Matrix(int n, int m, float** values) {
+    Matrix::Matrix(int n, int m, double** values) {
         this->n = n;
         this->m = m;
         this->values = values;
@@ -14,6 +14,6 @@
         return m;
     };
 
-    float** Matrix::getValues() {
+    double** Matrix::getValues() {
         return values;
     };

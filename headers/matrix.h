@@ -7,14 +7,14 @@ class Matrix {
 
         int n;
         int m;
-        float** values;
+        double** values;
 
     public:
 
-        Matrix(int n, int m, float** values);
+        Matrix(int n, int m, double** values);
         int getN();
         int getM();
-        float** getValues();
+        double** getValues();
 
 };
 

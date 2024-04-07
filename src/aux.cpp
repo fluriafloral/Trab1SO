@@ -3,13 +3,13 @@
 #include "../headers/matrix.h"
 
 Matrix generateMatrix(int n, int m) {
-    float** values = new float*[n];
+    double** values = new double*[n];
 
     for (int j = 0; j < n; j++) {
-        values[j] = new float[m];
+        values[j] = new double[m];
 
         for (int k = 0; k < m; k++) {
-            values[j][k] = static_cast<float> (rand()) / static_cast<float> (RAND_MAX/10); // gera um float aleatório entre 0.0 e 10.0
+            values[j][k] = static_cast<double> (rand()) / static_cast<double> (RAND_MAX/10); // gera umdouble aleatório entre 0.0 e 10.0
         }
     }
     

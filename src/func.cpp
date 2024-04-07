@@ -24,13 +24,13 @@ string generateFileName(string prefix) {
 Matrix readFile (string fileName) {
     ifstream file(fileName);
     int n, m;
-    float** values = nullptr;
+    double** values = nullptr;
 
     file >> n >> m;
-    values = new float*[n];
+    values = new double*[n];
 
     for (int j = 0; j < n; j++){
-        values[j] = new float[m];
+        values[j] = new double[m];
 
         for (int k = 0; k < m; k++) {
             file >> values[j][k];
