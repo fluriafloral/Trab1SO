@@ -43,10 +43,10 @@ int main() {
     chrono::system_clock::time_point end = chrono::high_resolution_clock::now();
 
     const auto elapsedTime = chrono::duration_cast<chrono::nanoseconds>(end - start);
-   
-    string resultFileName = generateFileName("result-" + to_string(result.getN()) + "x" + to_string(result.getN()));
+    
+    string prefix = "resultSeq-" + to_string(result.getN()) + "x" + to_string(result.getN());
+    string resultFileName = generateFileName(prefix);
     createResultFile(resultFileName, result, elapsedTime);
 
-    return 0;
-
+    return 0; 
 }

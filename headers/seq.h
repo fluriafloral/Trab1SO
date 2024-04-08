@@ -1,6 +1,6 @@
 #include <iostream> // cin, cout, endl
 #include <fstream> // ofstream, ifstream
-#include <chrono> // now
+#include <chrono> // now, time_point, duration cast
 #include "../headers/func.h"
 #include "../headers/matrix.h"
 

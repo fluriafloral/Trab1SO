@@ -1,19 +1,29 @@
 #include "../headers/matrix.h"
 
-    Matrix::Matrix(int n, int m, double** values) {
-        this->n = n;
-        this->m = m;
-        this->values = values;
+Matrix::Matrix(int n, int m) {
+    this->n = n;
+    this->m = m;
+
+    this->values = new double*[n];
+    for (int j = 0; j < n; j++) {
+        values[j] = new double[m];
     }
+}
 
-    int Matrix::getN() {
-        return n;
-    };
+Matrix::Matrix(int n, int m, double** values) {
+    this->n = n;
+    this->m = m;
+    this->values = values;
+}
 
-    int Matrix::getM() {
-        return m;
-    };
+int Matrix::getN() {
+    return n;
+};
 
-    double** Matrix::getValues() {
-        return values;
-    };
+int Matrix::getM() {
+    return m;
+};
+
+double** Matrix::getValues() {
+    return values;
+};

@@ -1,8 +1,7 @@
 #include "../headers/func.h"
 
 bool fileExists(string fileName) {
-    ifstream f(fileName);
-    return f.good();
+    return filesystem::exists(fileName);
 }
 
 string generateFileName(string prefix) {
@@ -16,9 +15,27 @@ string generateFileName(string prefix) {
             prefix += to_string(counter);
         }
     }
-    string fileName = "files/" + prefix + ".txt";
 
-    return fileName;
+    return "files/" + prefix + ".txt";
+}
+
+bool dirExists(string dirName) {
+    return filesystem::exists(dirName) && filesystem::is_directory(dirName);
+}
+
+string generateDirName(string prefix) {
+    if(dirExists("files/" + prefix)) {
+        int counter = 1;
+        prefix += "-" + to_string(counter);
+
+        while (dirExists("files/" + prefix)) {  
+            prefix.pop_back();
+            counter++;
+            prefix += to_string(counter);
+        }
+    }
+    filesystem::create_directory("files/" + prefix);
+    return "files/" + prefix;
 }
 
 Matrix readFile (string fileName) {
