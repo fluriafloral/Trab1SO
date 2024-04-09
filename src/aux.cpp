@@ -20,10 +20,10 @@ int main() {
     int n1, m1, n2, m2;
     cin >> n1 >> m1 >> n2 >> m2;
 
-    string fileName1 = generateFileName(to_string(n1) + "x" + to_string(m1));
+    string fileName1 = generateFileName("generatedMatrices/" + to_string(n1) + "x" + to_string(m1));
     createMatrixFile(fileName1, generateMatrix(n1, m1));
 
-    string fileName2 = generateFileName(to_string(n2) + "x" + to_string(m2));
+    string fileName2 = generateFileName("generatedMatrices/" + to_string(n2) + "x" + to_string(m2));
     createMatrixFile(fileName2, generateMatrix(n2, m2));
 
     return 0;

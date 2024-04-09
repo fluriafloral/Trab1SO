@@ -12,7 +12,7 @@ Matrix calculateMatrixProductSeq (Matrix matrix1, Matrix matrix2) {
         if (matrix1.getM() == matrix2.getN()){
             for (int j = 0; j < resultN; j++) {
                 resultValues[j] = new double[resultM];
-
+                
                 for (int k = 0; k < resultM; k++) {
                     resultValues[j][k] = 0;
 
@@ -44,7 +44,7 @@ int main() {
 
     const auto elapsedTime = chrono::duration_cast<chrono::nanoseconds>(end - start);
     
-    string prefix = "resultSeq-" + to_string(result.getN()) + "x" + to_string(result.getN());
+    string prefix = "resultSeq/" + to_string(result.getN()) + "x" + to_string(result.getN());
     string resultFileName = generateFileName(prefix);
     createResultFile(resultFileName, result, elapsedTime);
 

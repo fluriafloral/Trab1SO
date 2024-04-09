@@ -5,12 +5,14 @@ bool fileExists(string fileName) {
 }
 
 string generateFileName(string prefix) {
-    if (fileExists("files/" + prefix + ".txt")) {
+    if(fileExists("files/" + prefix + ".txt")) {
         int counter = 1;
         prefix += "-" + to_string(counter);
 
-        while (fileExists("files/" + prefix  + ".txt")) {  
-            prefix.pop_back();
+        while(fileExists("files/" + prefix  + ".txt")) {  
+            while(prefix[prefix.size() - 1] != '-') {
+                prefix.pop_back();
+            }
             counter++;
             prefix += to_string(counter);
         }
@@ -35,7 +37,7 @@ string generateDirName(string prefix) {
         }
     }
     filesystem::create_directory("files/" + prefix);
-    return "files/" + prefix;
+    return prefix + "/";
 }
 
 Matrix readFile (string fileName) {
@@ -70,11 +72,11 @@ void createMatrixFile(string fileName, Matrix matrix) {
         file << "\n";
     } 
 
-    cout << "matriz randômica " + fileName + " armazenada com sucesso" << endl;
+    cout << "matriz randômica armazenada com sucesso em " + fileName << endl;
     file.close();
 }
 
-void createResultFile(string fileName, Matrix result, chrono::nanoseconds timeElapsed) {
+void createResultFile(string fileName, Matrix result, chrono::nanoseconds elapsedTime) {
     ofstream file(fileName);
 
     file << result.getN() << " " << result.getM() << "\n";
@@ -84,8 +86,24 @@ void createResultFile(string fileName, Matrix result, chrono::nanoseconds timeEl
             file << "c[" << j+1 << "][" << k+1 << "] = " << result.getValues()[j][k] << "\n";
         }
     }
-    file << to_string(timeElapsed.count());
+    file << to_string(elapsedTime.count());
     
-    cout << "resultado do produto " + fileName + " armazenado com sucesso" << endl;
+    cout << "resultado do produto armazenado com sucesso em " + fileName << endl;
+    file.close();
+}
+
+void createSubMatrixResultFile(string fileName, Matrix result, int startRow, int endRow, int startCol, int endCol, chrono::nanoseconds elapsedTime) {
+    ofstream file(fileName);
+
+    file << result.getN() << " " << result.getM() << "\n";
+
+    for (int j = startRow; j < endRow; j++) {
+        for (int k = startCol; k < endCol; k++) {
+            file << "c[" << j+1 << "][" << k+1 << "] = " << result.getValues()[j][k] << "\n";
+        }
+    }
+    file << to_string(elapsedTime.count());
+    
+    cout << "resultado do produto armazenado com sucesso em " + fileName << endl;
     file.close();
 }
